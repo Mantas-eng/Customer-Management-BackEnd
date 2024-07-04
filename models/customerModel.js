@@ -59,7 +59,15 @@ const deleteCustomer = (id, callback) => {
 
 const getCustomerActions = (customerId, callback) => {
   db.all('SELECT * FROM actions WHERE customerId = ?', [customerId], (err, rows) => {
-    callback(err, rows);
+    if (err) {
+      callback(err);
+      return;
+    }
+    if (!rows || rows.length === 0) {
+      callback(null, []); 
+      return;
+    }
+    callback(null, rows);
   });
 };
 
