@@ -1,4 +1,3 @@
-// controllers/userController.js
 const jwt = require('jsonwebtoken');
 const { addUser, getUserByUsername } = require('../models/userModel');
 
